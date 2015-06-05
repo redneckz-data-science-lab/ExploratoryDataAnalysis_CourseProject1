@@ -26,7 +26,7 @@ if (!exists("EPC")) {
         epc.dataset <- data.table(read.csv.sql(EPC_CSV_FILE,
                                                sql = "select * from file where Date in ('1/2/2007', '2/2/2007')",
                                                sep=";"))
-        epc.dataset[, Date := as.Date(Date, format = "%d/%m/%Y")]
+        epc.dataset[, DateTime := as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %H:%M:%S"))]
         
         return(epc.dataset)
     }

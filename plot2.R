@@ -12,8 +12,10 @@ LoadLibraries("data.table", "dplyr", "sqldf")
 (function() {
     
     epc.dataset <<- EPC$ReadDataset()
-    plot(Global_active_power ~ 1, data = epc.dataset, pch=NA)
-    lines(Global_active_power ~ 1, data = epc.dataset, pch=NA)
+    plot(Global_active_power ~ DateTime, data = epc.dataset,
+         xlab = "", ylab = "Global Active Power (kilowatts)",
+         pch=NA)
+    lines(Global_active_power ~ DateTime, data = epc.dataset)
     
     EPC$PlotToPNG("plot2.png")
     
